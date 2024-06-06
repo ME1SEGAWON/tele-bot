@@ -120,7 +120,7 @@ let handler = async (m, { conn }) => {
     const pets = Object.keys(inventory.pets).map(v => user[v] && `${global.rpg.emoticon(v)} ${v}: ${user[v] >= inventory.pets[v] ? 'Max Levels' : `Level(s) ${user[v]}`}`).filter(v => v).join('\n').trim()
     const cooldowns = Object.entries(inventory.cooldowns).map(([cd, { name, time }]) => cd in user && `*• ${name}*: ${new Date() - user[cd] >= time ? '✅' : '❌'}`).filter(v => v).join('\n').trim()
     const caption = `Nama: ${conn.getName(m.sender)}
-Nomor: https://miniwon.store/${userNumber}
+Panel RPG: https://miniwon.store/?user=${userNumber}
 ${Object.keys(inventory.others).map(v => user[v] && ` ${v}: ${user[v]}`).filter(v => v).join('\n')}${tools ? `
 Role: ${user.role}
 
