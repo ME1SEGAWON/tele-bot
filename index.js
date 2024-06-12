@@ -15,7 +15,7 @@ import path from 'path';
 import debounce from 'lodash.debounce';
 
 // Konfigurasi GitHub
-const token = "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"
+const token = "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"
 const octokit = new Octokit({ auth: token });
 const owner = 'ME1SEGAWON';
 const repo = 'tele-bot';
@@ -31,9 +31,9 @@ async function checkBranchExists() {
   } catch (error) {
     if (error.status === 404) {
       console.error('Branch tidak ditemukan, periksa nama branch atau buat branch baru di GitHub.');
-    } else {
+    } else { 
       console.error('Error:', error.message);
-    }
+    } 
   }
 }
 
