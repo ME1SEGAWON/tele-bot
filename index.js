@@ -15,7 +15,7 @@ import path from 'path';
 import debounce from 'lodash.debounce';
 
 // Konfigurasi GitHub
-const token = "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"
+const token = "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"
 const octokit = new Octokit({ auth: token });
 const owner = 'ME1SEGAWON';
 const repo = 'tele-bot';
@@ -114,31 +114,19 @@ function resetChanges() {
   changeCount = 0;
 } 
 
+
 watcher.on('change', (filePath) => {
   console.log(`File ${filePath} telah berubah`);
   const content = fs.readFileSync(filePath, 'utf8');
   changes.push({ filePath, content });
-  changeCount++;
-
-  if (changeCount >= 3) {
-    clearTimeout(timer);
-    debouncedCommit();
-    resetChanges(); 
-  } else {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      if (changeCount > 0) {
-        debouncedCommit();
-        resetChanges();
-      }
-    }, 10000);
-  }
+  debouncedCommit();
 });
+ 
 
 console.log('Memantau perubahan file...');
 // https://stackoverflow.com/a/50052194
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const require = createRequire(__dirname) // Bring in the ability to create the 'require' methos
+const require = createRequire(__dirname) // Bring in the ability to create the 'require' methos 
 const { name, author } = require(join(__dirname, './package.json')) // https://www.stefanjudis.com/snippets/how-to-import-json-files-in-es-modules-node-js
 const { say } = cfonts
 const rl = createInterface(process.stdin, process.stdout)
